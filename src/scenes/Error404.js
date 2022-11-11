@@ -1,6 +1,7 @@
 import React from 'react';
 
 import OutlineButton from "../components/atoms/OutlineButton";
+import Navbar from '../components/molecules/Navbar';
 
 import "../styles/index.scss"
 
@@ -8,6 +9,7 @@ export default class Error404 extends React.PureComponent{
     render() {
         return (
             <main>
+                <Navbar links={{"404": "/404"}}/>
                 <section className="hero">
                     <div className="logo">
                         <div className="stripes">

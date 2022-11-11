@@ -1,6 +1,7 @@
 $background: #f5efd5;
 $special-color: #cc231c;
 $color: #071013;
+$color_inv: invert(#071013);
 
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
@@ -94,7 +95,7 @@ section{
     }
 }
 
-.container{
+section.hero .container{
     width: 80%;
     height: 100%;
 
@@ -239,6 +240,21 @@ section{
 }
 
 
+section.leaderboards .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    border: 5px solid #cc231c;
+    border-radius: 10px;
+
+    .container-header{
+        font-size: 2rem;
+    }
+}
+
+
 .chevron{
     position: absolute;
     bottom: 1rem;
@@ -289,7 +305,6 @@ section{
     background-color: hsla(195, 29%, 11%, 0.76);
     // background-color: hsla(0, 0%, 30%, 0.20);
     backdrop-filter: blur(50px);
-    color: white;
 
     border-bottom: hsl(195, 29%, 15%) 1px solid;
     z-index: 10;
@@ -298,7 +313,10 @@ section{
     padding: 0 2rem;
     gap: 2rem;
 
-    // * { font-family: 'Archivo Black', sans-serif; }
+    * {
+        // font-family: 'Archivo Black', sans-serif;
+        color: $color_inv;
+    }
     //transition down when --srolled
 
     top: -80px;
@@ -329,6 +347,7 @@ section{
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: center;
 
         gap: 2rem;
         margin: 0;
@@ -336,6 +355,7 @@ section{
         list-style: none;
         li{
             a{
+                padding: 0 1rem;
                 
                 text-decoration: none;
                 font-size: 1.5rem;
@@ -345,6 +365,10 @@ section{
                     color: #cc231c;
                 }
                 cursor:pointer;
+
+                &.active{
+                    border-bottom: 2px solid $color_inv;
+                }
             }
         }
         

@@ -21,7 +21,7 @@ export default class Index extends React.PureComponent{
     render() {
         return (
             <main>
-                <Navbar />
+                <Navbar page="home" />
                 <section className="hero">
 
                     <div className="logo">
@@ -55,9 +55,9 @@ export default class Index extends React.PureComponent{
                 </section>
                 <section className="leaderboards" ref={this.scrollIntoViewElement}>
                     <div className="container">
-                        <h1>Leader boards</h1>
-                        <p>You are at last place dsad sadsad sa</p>
-                        
+                        <h1 className="container-header">Leader Boards</h1>                                    
+                        <div className="leaderboard">
+                        </div>                        
                     </div>
                 </section>
             </main>

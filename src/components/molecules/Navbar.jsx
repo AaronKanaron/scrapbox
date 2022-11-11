@@ -3,9 +3,13 @@ import React from 'react'
 
 
 export default class Navbar extends React.PureComponent {
+    constructor (props) {
+        super(props);
+    }
     //show navbar after 50 view height scrolled
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        document.querySelector(`#${this.props.page}`).classList.add('active');
     }
 
     componentWillUnmount() {
@@ -29,20 +33,16 @@ export default class Navbar extends React.PureComponent {
                     <img src="./logo-white.svg" alt="Netflix Logo" />
                 </div>
                 <ul className="navbar__links">
+                    {/* {this.props.links.map((linkname, destination) => <li><a href={destination}>{linkname}</a></li>)} */}
+                    
                     <li>
-                        <a>Home</a>
+                        <a href='/home' id='home'>Home</a>
                     </li>
                     <li>
-                        <a>Geoms</a>
+                        <a href='/home' id='about'>About</a>
                     </li>
                     <li>
-                        <a>fedds</a>
-                    </li>
-                    <li>
-                        <a>dacks</a>
-                    </li>
-                    <li>
-                        <a>you</a>
+                        <a href='/home'>About</a>
                     </li>
                 </ul>
                 <div className="navbar__user">
