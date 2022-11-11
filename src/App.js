@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// import Home from "./scenes/Home";
+import Index from "./scenes/Index";
+import SignUp from "./scenes/account/SignUp";
+import Error404 from "./scenes/Error404";
+
+//molecules
+import Modal from "./components/molecules/Modal";
+
+
+import "./styles/universal.scss";
+
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
+
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                {/* <Route exact path="/" element={ <Home /> } /> */}
+                <Route exact path="/" element={ <Index /> } />
+                <Route exact path="/*" element={ <Error404 /> } />
+                <Route exact path="/sign-up" element={ <SignUp /> } />
+            </Routes>
+        </BrowserRouter>
+    );
 }
-
-export default App;
