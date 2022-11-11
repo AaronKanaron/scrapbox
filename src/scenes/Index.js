@@ -2,6 +2,7 @@ import React from "react";
 
 import OutlineButton from "../components/atoms/OutlineButton";
 import Navbar from "../components/molecules/Navbar";
+import Leaderboard from "../components/molecules/Leaderboard";
 
 import "../styles/index.scss"
 
@@ -54,11 +55,21 @@ export default class Index extends React.PureComponent{
                     <img className="chevron" src="./down.svg" onClick={this.scroll}/>
                 </section>
                 <section className="leaderboards" ref={this.scrollIntoViewElement}>
-                    <div className="container">
-                        <h1 className="container-header">Leader Boards</h1>                                    
-                        <div className="leaderboard">
-                        </div>                        
-                    </div>
+                    <fieldset className="container">
+                        <legend>leaderboard</legend>
+                        <div className="sorttabs">
+                            <div className="sorttab large">
+                                <h1>Rating</h1>
+                            </div>
+                            <div className="sorttab">
+                                <h2>Pmounts</h2>
+                                <h2>Words</h2>
+                                <h2 className="active">Points</h2>
+                            </div>
+                        </div>
+                        
+                        <Leaderboard />
+                    </fieldset>
                 </section>
             </main>
         )

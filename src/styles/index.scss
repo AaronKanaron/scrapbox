@@ -6,6 +6,7 @@ $color_inv: invert(#071013);
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 body{
     // background-color: ;
@@ -59,7 +60,7 @@ main{
     }
 }
 
-
+$leaderboard-bg: #071013;
 section{
     width: 100%;
     height: 100vh;
@@ -79,7 +80,7 @@ section{
         justify-content: center;
         flex-direction: column;
         gap: 5rem;
-        background-color: #071013;
+        background-color: $leaderboard-bg;
         color: #cc231c;
         &::after{
             content: "";
@@ -244,13 +245,105 @@ section.leaderboards .container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
-    height: 50%;
-    border: 5px solid #cc231c;
+    width: 60%;
+    height: 60%;
+    border: 5px solid $color_inv;
     border-radius: 10px;
+    padding: 1rem 2rem;
+    position: relative;
 
-    .container-header{
+    * { color: $color_inv }
+
+    legend {
+        margin: 0 auto;
+        padding: 0 1rem;
         font-size: 2rem;
+    }
+
+    .sorttabs{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        * { font-family: "Quicksand", sans-serif; }
+
+        .sorttab{
+            display: flex;
+            flex-direction: row;
+            font-size: 0.8rem;
+            flex: 1;
+            &.large {
+                flex: 2;
+                font-size: 1.5rem;
+            }
+            
+
+            &:not(.large) {
+                justify-content: center;
+                cursor: pointer;
+                h2 {
+                    flex: 1;
+                    text-align: center;
+                }
+
+            }
+        }
+
+        h1, h2{
+            margin: 0;
+            margin-bottom: 1rem;
+            padding: 0;
+            font-size: inherit;
+        }
+        h2:not(.active) { color: transparentize($color: $color_inv, $amount: 0.3)};
+    }
+
+    
+    .leaderboard { //ul
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        * { font-family: "Quicksand", sans-serif; }
+
+        li {
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 4rem;
+            border: 3px solid $color_inv;
+            border-radius: 5px;
+            // color: $color;
+            // background-color: $color_inv;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+
+            //first three children
+            &:nth-child(-n+3){
+                border: 3px solid #ffc021;
+            }
+
+            .points{
+                width: 2.5rem;
+                height: 1.5rem;
+                background-color: hsl(155, 73%, 36%);
+                //center text vertically and horizontally
+                display: flex;
+                justify-content: center;
+                align-items: center;                
+                border-radius: 5px;
+            }
+        }
     }
 }
 
