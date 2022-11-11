@@ -5,18 +5,28 @@ import LeaderboardItem from '../atoms/LeaderboardItem'
 const player = [
     {
         rank: 1,
-        username: 'user1',
+        username: 'UraniumConsumer',
         points: 100
     },
     {
         rank: 2,
-        username: 'user2',
+        username: 'ChildCombustor',
         points: 50
     },
     {
         rank: 3,
-        username: 'user2',
-        points: 50
+        username: 'GloblingBost',
+        points: 20
+    },
+    {
+        rank: 4,
+        username: 'PotatoBuster',
+        points: 10
+    },
+    {
+        rank: 5,
+        username: 'NaseemHamed',
+        points: 10
     }
 ]
 

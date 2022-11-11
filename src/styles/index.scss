@@ -266,6 +266,8 @@ section.leaderboards .container{
         align-items: center;
         gap: 1rem;
         width: 100%;
+        padding-right: 2rem;
+        box-sizing: border-box;
         * { font-family: "Quicksand", sans-serif; }
 
         .sorttab{
@@ -313,12 +315,21 @@ section.leaderboards .container{
 
         * { font-family: "Quicksand", sans-serif; }
 
+        //remove scroll bar
+        &::-webkit-scrollbar {
+            display: none;
+        } 
+        //firefox
+        scrollbar-width: none;
+
         li {
             box-sizing: border-box;
             width: 100%;
-            min-height: 4rem;
-            border: 3px solid $color_inv;
-            border-radius: 5px;
+            min-height: 5rem;
+            max-height: 5rem;
+            outline: 3px solid $color_inv;
+            outline-offset: -3px;
+            border-radius: 1.5rem;
             // color: $color;
             // background-color: $color_inv;
 
@@ -327,21 +338,63 @@ section.leaderboards .container{
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            position: relative;
+            
 
             //first three children
-            &:nth-child(-n+3){
-                border: 3px solid #ffc021;
+            &.top3{
+                outline-color: #ffc021;
+            }
+
+            .divider{
+                flex: 1;
+                height: 100%;
+                &.large{
+                    flex: 2;
+                    max-width: 66%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    // justify-content: center;
+                    gap: 1rem;
+                    .rank{
+
+                    }
+
+                    .pfp{
+                        height: 50%;
+                        border-radius: 50%;
+                    }
+                }  
+
+                &:not(.large) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    >* {
+                        flex: 1;
+                        text-align: center;
+                    }
+                }
             }
 
             .points{
-                width: 2.5rem;
                 height: 1.5rem;
-                background-color: hsl(155, 73%, 36%);
                 //center text vertically and horizontally
                 display: flex;
                 justify-content: center;
                 align-items: center;                
-                border-radius: 5px;
+
+                p{
+                    min-width: 2rem;
+                    padding: 0 .5rem;
+                    background-color: hsl(155, 66%, 29%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;                
+                    border-radius: 5px;
+                }
             }
         }
     }
