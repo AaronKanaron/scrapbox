@@ -1,13 +1,31 @@
 import React from 'react'
+import SortIcon from "../molecules/Icons";
 
 import LeaderboardItem from '../atoms/LeaderboardItem'
+import OutlineButton from '../atoms/OutlineButton'
 
 const player = [
-    // {
-    //     rank: 1,
-    //     username: 'UraniumConsumer',
-    //     points: 100
-    // },
+    {
+        rank: 1,
+        username: 'AaronKanaron',
+        points: 735,
+        pmounts: 23,
+        words: 2544
+    },
+    {
+        rank: 2,
+        username: 'AaronKanaron',
+        points: 735,
+        pmounts: 23,
+        words: 2544
+    },
+    {
+        rank: 3,
+        username: 'AaronKanaron',
+        points: 735,
+        pmounts: 23,
+        words: 2544
+    },
     // {
     //     rank: 2,
     //     username: 'ChildCombustor',
@@ -81,24 +99,52 @@ export default class Leaderboard extends React.PureComponent {
                     rank={player.rank}
                     username={player.username}
                     points={player.points}
+                    words={player.words}
+                    pmounts={player.pmounts}
                 />
             ))
         } else {
             return (
-                <li className="leaderboard-item">
-                    <p>You have no friends</p>
-                </li>
+                <div className='add-friends'>
+                    <p>Sign in and invite your friends to see leaderboards!</p>
+                    <OutlineButton buttonText='Sign in'/>
+                </div>
             )
         }
     }
 
     render() {
         return (
-            <ul className="leaderboard">
-                {
-                    this.renderLeaderboard()
-                }
-            </ul>           
+            <section className="leaderboards" ref={this.scrollIntoViewElement}>
+                <fieldset className="container">
+                    <legend>leaderboard</legend>
+                        
+                    <div className="sorttabs-container">
+                        <div className="sorttabs large">
+                            <h1>Friends</h1>
+                        </div>
+                        <div className="sorttabs">
+                            <div className="sorttab">
+                                <SortIcon color="white"/>
+                                <h2>Pmounts</h2>
+                            </div>
+                            <div className="sorttab">
+                                <SortIcon color="white"/>
+                                <h2>Words</h2>
+                            </div>
+                            <div className="sorttab active">
+                                <SortIcon color="white"/>
+                                <h2>Points</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <ul className="leaderboard">
+                        {
+                            this.renderLeaderboard()
+                        }
+                    </ul>          
+                </fieldset>
+            </section> 
         )
     }
 }

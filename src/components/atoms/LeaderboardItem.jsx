@@ -7,7 +7,9 @@ class LeaderboardItem extends React.PureComponent {
         this.state = {
             rank: this.props.rank,
             username: this.props.username,
-            points: this.props.points
+            points: this.props.points,
+            pmounts: this.props.pmounts,
+            words: this.props.words
         }
     }
     
@@ -24,10 +26,10 @@ class LeaderboardItem extends React.PureComponent {
                 </div>
                 <div className="divider">
                     <div className="pmount">
-                        <p>122</p>
+                        <p>{this.props.pmounts}</p>
                     </div>
                     <div className="words">
-                        <p>13231</p>
+                        <p>{this.props.words}</p>
                     </div>
                     <div className="points">
                         <p>{this.props.points}</p>

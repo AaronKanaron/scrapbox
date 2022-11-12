@@ -4,7 +4,6 @@ import OutlineButton from "../components/atoms/OutlineButton";
 import Navbar from "../components/molecules/Navbar";
 import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
-import SortIcon from "../components/molecules/Icons";
 
 /*- Constants -*/
 const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
@@ -137,32 +136,7 @@ export default class Index extends React.PureComponent {
                     
                     <img className="chevron" src="./down.svg" onClick={this.scroll}/>
                 </section>
-                <section className="leaderboards" ref={this.scrollIntoViewElement}>
-                    <fieldset className="container">
-                        <legend>leaderboard</legend>
-                        <div className="sorttabs-container">
-                            <div className="sorttabs large">
-                                <h1>Rating</h1>
-                            </div>
-                            <div className="sorttabs">
-                                <div className="sorttab">
-                                    <SortIcon color="white"/>
-                                    <h2>Pmounts</h2>
-                                </div>
-                                <div className="sorttab">
-                                    <SortIcon color="white"/>
-                                    <h2>Words</h2>
-                                </div>
-                                <div className="sorttab active">
-                                    <SortIcon color="white"/>
-                                    <h2>Points</h2>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <Leaderboard />
-                    </fieldset>
-                </section>
+                <Leaderboard />
             </main>
         )
     }
