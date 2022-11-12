@@ -116,15 +116,18 @@ export default class Index extends React.PureComponent {
                             <div className="stripe" />
                             <div className="stripe" />
                         </div>
-                        <img className="logo" src="./logo/untitled.svg"/>
+                        <img className="logo" src="./logo/logo-big.svg"/>
                     </div>
 
                     <div className="container">
                         <div className="content">
                             <div className="buttons">
-                                <OutlineButton iconSrc="./icons/enter.svg" buttonText="Sign up" additionalClass="one" href="join" />
+                                {/* <div> */}
+
+                                    <input type="text" className="button one" placeholder="Join"></input>
+                                {/* </div> */}
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="create" />
-                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse" additionalClass="three" href="browse" />
+                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
                             </div>
                         </div>
@@ -138,32 +141,7 @@ export default class Index extends React.PureComponent {
                     
                     <img className="chevron" src="./icons/down.svg" onClick={this.scroll}/>
                 </section>
-                <section className="leaderboards" ref={this.scrollIntoViewElement}>
-                    <fieldset className="container">
-                        <legend>leaderboard</legend>
-                        <div className="sorttabs-container">
-                            <div className="sorttabs large">
-                                <h1>Rating</h1>
-                            </div>
-                            <div className="sorttabs">
-                                <div className="sorttab">
-                                    <SortIcon color="white"/>
-                                    <h2>Pmounts</h2>
-                                </div>
-                                <div className="sorttab">
-                                    <SortIcon color="white"/>
-                                    <h2>Words</h2>
-                                </div>
-                                <div className="sorttab active">
-                                    <SortIcon color="white"/>
-                                    <h2>Points</h2>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <Leaderboard />
-                    </fieldset>
-                </section>
+                <Leaderboard />
             </main>
         )
     }
