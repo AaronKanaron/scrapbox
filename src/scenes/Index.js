@@ -29,7 +29,7 @@ export default class Index extends React.PureComponent {
         this.websocketConnectionRetries = 0;
 
         /*- Use Refs -*/
-        this.scrollIntoViewElement = React.createRef()
+        this.scrollIntoViewElement = React.createRef();
 	}
 
     /*- Initialize websocket connection -*/
@@ -141,7 +141,10 @@ export default class Index extends React.PureComponent {
                     
                     <img className="chevron" src="./icons/down.svg" onClick={this.scroll}/>
                 </section>
-                <Leaderboard />
+                <div ref={this.scrollIntoViewElement}>
+
+                    <Leaderboard />
+                </div>
             </main>
         )
     }
