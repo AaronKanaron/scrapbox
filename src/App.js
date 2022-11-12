@@ -5,9 +5,8 @@ import Index from "./scenes/Index";
 import SignUp from "./scenes/account/SignUp";
 import Error404 from "./scenes/Error404";
 
-//molecules
+// molecules
 import Modal from "./components/molecules/Modal";
-
 
 import "./styles/universal.scss";
 
