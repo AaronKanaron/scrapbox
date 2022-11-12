@@ -5,6 +5,7 @@ import Navbar from "../components/molecules/Navbar";
 import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
 import SortIcon from "../components/molecules/Icons";
+import Globals from "../functional/Globals";
 
 /*- Constants -*/
 const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
@@ -37,7 +38,7 @@ export default class Index extends React.PureComponent {
         if (!this.state.isMounted) { return; };
 
         /*- Change vars -*/
-        this.websocket = new WebSocket("ws://127.0.0.1:8080");
+        this.websocket = new WebSocket(Globals.websocketAddress);
         this.websocketConnectionRetries += 1;
 
         /*- Check websocket availability -*/

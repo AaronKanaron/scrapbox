@@ -4,6 +4,7 @@ import React from 'react'
 import Index from "./scenes/Index";
 import SignUp from "./scenes/account/SignUp";
 import Error404 from "./scenes/Error404";
+import CreateRoom from "./scenes/CreateRoom";
 
 // molecules
 import Modal from "./components/molecules/Modal";
@@ -16,7 +17,6 @@ import {
     Route,
 } from "react-router-dom";
 
-
 export default function App() {
     return (
         <BrowserRouter>
@@ -25,6 +25,7 @@ export default function App() {
                 <Route exact path="/" element={ <Index /> } />
                 <Route exact path="/*" element={ <Error404 /> } />
                 <Route exact path="/sign-up" element={ <SignUp /> } />
+                <Route exact path="/room" element={ <CreateRoom /> } />
             </Routes>
         </BrowserRouter>
     );
