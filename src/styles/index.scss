@@ -21,8 +21,6 @@ body{
     font-family: "Bowlby One SC", sans-serif;
 }
 
-main{
-}
 
 .logo{
     padding-top: 1rem;
@@ -85,7 +83,7 @@ section{
         &::after{
             content: "";
             position: absolute;
-            background-image: url(../../public/wape.svg);
+            background-image: url(../../public/assets/wape.svg);
             background-repeat: no-repeat;
             background-size: cover;
             width: 100%;
