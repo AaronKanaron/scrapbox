@@ -6,6 +6,8 @@ import Leaderboard from "../components/molecules/Leaderboard";
 
 import "../styles/index.scss"
 
+import SortIcon from "../components/molecules/Icons";
+
 
 export default class Index extends React.PureComponent{
     //onclick a button, scroll into view
@@ -57,14 +59,23 @@ export default class Index extends React.PureComponent{
                 <section className="leaderboards" ref={this.scrollIntoViewElement}>
                     <fieldset className="container">
                         <legend>leaderboard</legend>
-                        <div className="sorttabs">
-                            <div className="sorttab large">
+                        <div className="sorttabs-container">
+                            <div className="sorttabs large">
                                 <h1>Rating</h1>
                             </div>
-                            <div className="sorttab">
-                                <h2>Pmounts</h2>
-                                <h2>Words</h2>
-                                <h2 className="active">Points</h2>
+                            <div className="sorttabs">
+                                <div className="sorttab">
+                                    <SortIcon color="white"/>
+                                    <h2>Pmounts</h2>
+                                </div>
+                                <div className="sorttab">
+                                    <SortIcon color="white"/>
+                                    <h2>Words</h2>
+                                </div>
+                                <div className="sorttab active">
+                                    <SortIcon color="white"/>
+                                    <h2>Points</h2>
+                                </div>
                             </div>
                         </div>
                         

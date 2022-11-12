@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
 import LeaderboardItem from '../atoms/LeaderboardItem'
 
@@ -25,6 +25,46 @@ const player = [
     },
     {
         rank: 5,
+        username: 'NaseemHamed',
+        points: 10
+    }
+    ,{
+        rank: 6,
+        username: 'PotatoBuster',
+        points: 10
+    },
+    {
+        rank: 7,
+        username: 'NaseemHamed',
+        points: 10
+    }
+    ,{
+        rank: 8,
+        username: 'PotatoBuster',
+        points: 10
+    },
+    {
+        rank: 9,
+        username: 'NaseemHamed',
+        points: 10
+    }
+    ,{
+        rank: 10,
+        username: 'PotatoBuster',
+        points: 10
+    },
+    {
+        rank: 11,
+        username: 'NaseemHamed',
+        points: 10
+    }
+    ,{
+        rank: 12,
+        username: 'PotatoBuster',
+        points: 10
+    },
+    {
+        rank: 13,
         username: 'NaseemHamed',
         points: 10
     }
