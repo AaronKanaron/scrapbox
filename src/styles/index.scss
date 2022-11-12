@@ -125,10 +125,34 @@ section.hero .container{
                 flex: 0 0 calc(50% - .5rem);
             }
 
-            a {
+            a, input {
                 text-decoration: none;
                 &.large{
-                    flex: 1 1 calc(100% - 1rem);
+                    flex: 1 1 calc(100% - .5rem);
+                }
+            }
+
+            input {
+                background-color: $special-color;
+                color: $color_inv;
+                // padding: 1rem;
+                outline: none;
+                cursor: pointer;
+                transition: all .2s ease-in-out;
+                &:hover{
+                    background-color: #cc231c;
+                    color: #fff;
+                }
+                text-align: center;
+                margin: 0; padding: 0;
+                font-size: 2em;
+
+                &::placeholder{
+                    color: $color;
+                    //make it not transparent
+                    opacity: 1;
+                    font-size: 2em;
+                    text-transform: lowercase;
                 }
             }
 
@@ -147,6 +171,7 @@ section.hero .container{
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                box-sizing: border-box;
 
                 &.one { border: #689d69 10px solid; }
                 &.two { border: #458587 10px solid; }

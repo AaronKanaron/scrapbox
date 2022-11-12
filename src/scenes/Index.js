@@ -120,9 +120,12 @@ export default class Index extends React.PureComponent {
                     <div className="container">
                         <div className="content">
                             <div className="buttons">
-                                <OutlineButton iconSrc="./icons/enter.svg" buttonText="Sign up" additionalClass="one" href="join" />
+                                {/* <div> */}
+
+                                    <input type="text" className="button one" placeholder="Join"></input>
+                                {/* </div> */}
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="create" />
-                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse" additionalClass="three" href="browse" />
+                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
                             </div>
                         </div>
