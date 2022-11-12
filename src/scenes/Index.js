@@ -6,20 +6,26 @@ import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
 import SortIcon from "../components/molecules/Icons";
 
+/*- Constants -*/
+const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
+
 /*- Main body -*/
 export default class Index extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
         /*- Changeable -*/
-		this.state = {};
+		this.state = {
+            isMounted: false,
+        };
 
         /*- Function bindings -*/
-		this.connectToWebsocket = this.connectToWebsocket.bind(this);
-        this.scroll = this.scroll.bind(this);
+		this.mountWebsocket     = this.mountWebsocket.bind(this);
+		this.scroll             = this.scroll.bind(this);
 
         /*- Vars -*/
-        this.websocket = new WebSocket("ws://127.0.0.1:8080");
+        this.websocket = null;
+        this.websocketConnectionRetries = 0;
 
         /*- Use Refs -*/
         this.scrollIntoViewElement = React.createRef()
@@ -27,7 +33,22 @@ export default class Index extends React.PureComponent {
 
     /*- Initialize websocket connection -*/
 	mountWebsocket() {
-        console.log("Websocket mounted!");
+        console.log("im", this.state.isMounted)
+        if (!this.state.isMounted) { return; };
+
+        /*- Change vars -*/
+        this.websocket = new WebSocket("ws://127.0.0.1:8080");
+        this.websocketConnectionRetries += 1;
+
+        /*- Check websocket availability -*/
+        if (this.websocketConnectionRetries > MAX_WEBSOCKET_CONNECTION_RETRIES) {
+            console.warn("Connection problems to websocket after", MAX_WEBSOCKET_CONNECTION_RETRIES, "tries.");
+            return;
+        } else if (this.websocket == null) {
+            return this.mountWebsocket();
+        } else {
+            console.log("Websocket mounted!");
+        };
 
         /*- Websocket data -*/
 		const e = {
@@ -40,25 +61,35 @@ export default class Index extends React.PureComponent {
         /*- Websocket did mount -*/
 		this.websocket.onopen = () => {
 			console.log("Connected to websocket");
-			websocket.send(JSON.stringify(e));
+			this.websocket.send(JSON.stringify(e));
 		};
 
         /*- Websocket recieve from server -*/
 		this.websocket.onmessage = (e) => {
-			console.log("Message received from websocket");
-			console.log(JSON.parse(e.data));
+			console.log("MESSAGE: ", JSON.parse(e.data));
 		};
 
         /*- Websocket did unmount -*/
-		this.websocket.onclose = (e) => {
-			console.log("Websocket closed");
-			console.log(e);
+		this.websocket.onclose = () => {
+            console.log("Websocket closed");
+
+            /*- Retry connect -*/
+            if (this.state.isMounted) {
+                return this.mountWebsocket();
+            };
 		};
 	}
 
     /*- Initialize -*/
     componentDidMount() {
-        mountWebsocket();
+        this.setState({ isMounted: true }, () => {
+            this.mountWebsocket();
+        })
+    }
+
+    /*- Unmount -*/
+    componentWillUnmount() {
+        this.setState({ isMounted: true })
     }
 
     /*- Functions -*/
