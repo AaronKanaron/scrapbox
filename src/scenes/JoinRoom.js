@@ -1,10 +1,7 @@
 /*- Imports -*/
 import React from "react";
-import OutlineButton from "../components/atoms/OutlineButton";
 import Navbar from "../components/molecules/Navbar";
-import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
-import SortIcon from "../components/molecules/Icons";
 import Cookies from "js-cookie";
 import Globals from "../functional/Globals";
 
@@ -12,7 +9,7 @@ import Globals from "../functional/Globals";
 const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
 
 /*- Main body -*/
-export default class CreateRoom extends React.PureComponent {
+export default class JoinRoom extends React.PureComponent {
 	constructor(props) {
 		super(props);
 
@@ -53,9 +50,10 @@ export default class CreateRoom extends React.PureComponent {
 
         /*- Websocket data -*/
 		const e = {
-			destination: "create-room",
+			destination: "join-room",
 			data: JSON.stringify({
-				jwt: this.jwtToken
+				jwt: this.jwtToken,
+                room_id: "3f97a3ed-bf8d-4906-8877-99f00025fc36"
 			}),
 		};
 
@@ -63,7 +61,7 @@ export default class CreateRoom extends React.PureComponent {
 		this.websocket.onopen = () => {
             if (!this.state.isMounted) { return; };
 
-			/*- Send create room request -*/
+			/*- Send join room request -*/
             console.log("Sending packets");
 			this.websocket.send(JSON.stringify(e));
 		};

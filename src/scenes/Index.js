@@ -4,7 +4,6 @@ import OutlineButton from "../components/atoms/OutlineButton";
 import Navbar from "../components/molecules/Navbar";
 import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
-import SortIcon from "../components/molecules/Icons";
 import Globals from "../functional/Globals";
 
 /*- Constants -*/
@@ -126,7 +125,7 @@ export default class Index extends React.PureComponent {
 
                                     <input type="text" className="button one" placeholder="Join"></input>
                                 {/* </div> */}
-                                <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="create" />
+                                <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />
                                 <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
                             </div>
@@ -142,7 +141,6 @@ export default class Index extends React.PureComponent {
                     <img className="chevron" src="./icons/down.svg" onClick={this.scroll}/>
                 </section>
                 <div ref={this.scrollIntoViewElement}>
-
                     <Leaderboard />
                 </div>
             </main>

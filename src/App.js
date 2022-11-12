@@ -5,6 +5,7 @@ import Index from "./scenes/Index";
 import SignUp from "./scenes/account/SignUp";
 import Error404 from "./scenes/Error404";
 import CreateRoom from "./scenes/CreateRoom";
+import JoinRoom from "./scenes/JoinRoom";
 
 // molecules
 import Modal from "./components/molecules/Modal";
@@ -26,6 +27,7 @@ export default function App() {
                 <Route exact path="/*" element={ <Error404 /> } />
                 <Route exact path="/sign-up" element={ <SignUp /> } />
                 <Route exact path="/room" element={ <CreateRoom /> } />
+                <Route exact path="/join" element={ <JoinRoom /> } />
             </Routes>
         </BrowserRouter>
     );
