@@ -30,7 +30,7 @@ export default class Navbar extends React.PureComponent {
         return (
             <nav className="navbar">
                 <div className="navbar__logo">
-                    <img src="./logo-white.svg" alt="Netflix Logo" />
+                    <img src="./logo/logo-white.svg" alt="Scrapbox" />
                 </div>
                 <ul className="navbar__links">
                     {/* {this.props.links.map((linkname, destination) => <li><a href={destination}>{linkname}</a></li>)} */}

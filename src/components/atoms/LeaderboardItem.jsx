@@ -19,7 +19,7 @@ class LeaderboardItem extends React.PureComponent {
                 <div className="divider large">
                     <p className='rank'>{this.props.rank}</p>
                     <div className="profile">
-                        {this.props.rank <= 1 ? <img className="crown" src="./crown.svg" alt="crown" /> : null}
+                        {this.props.rank <= 1 ? <img className="crown" src="./assets/crown.svg" alt="crown" /> : null}
                         <img className="pfp" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"/>
                     </div>
                     <p className='username'>{this.props.username}</p>

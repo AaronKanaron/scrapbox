@@ -114,7 +114,7 @@ export default class Index extends React.PureComponent {
                             <div className="stripe" />
                             <div className="stripe" />
                         </div>
-                        <img className="logo" src="./logo/untitled.svg"/>
+                        <img className="logo" src="./logo/logo-big.svg"/>
                     </div>
 
                     <div className="container">
