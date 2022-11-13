@@ -100,6 +100,24 @@ export default class Index extends React.PureComponent {
             inline: "nearest"
         });
     }
+
+    validate_input(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = evt.clipboardData.getData('text/plain');
+        } else {
+        // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
     
     /*- Render to DOM -*/
     render() {
@@ -121,10 +139,10 @@ export default class Index extends React.PureComponent {
                     <div className="container">
                         <div className="content">
                             <div className="buttons">
-                                {/* <div> */}
-
-                                    <input type="text" className="button one" placeholder="Join"></input>
-                                {/* </div> */}
+                                <div className="joinbutton">
+                                    <input type="text" id="join" placeholder=" " maxLength={5} className="button one"></input>
+                                    <label htmlFor="join">Join</label>
+                                </div>
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />
                                 <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
