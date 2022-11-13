@@ -410,11 +410,11 @@ section.leaderboards .container{
 
             //first three children
             &.top3{
-                outline-color: #d79922;
+                // outline-color: #d79922;
                 height: 8rem;
 
                 .pfp{
-                    border: 3px solid #d79922;
+                    border: 3px solid #d79922 !important;
                 }
             }
 
@@ -440,7 +440,10 @@ section.leaderboards .container{
                         box-sizing: border-box;
                         position: relative;
                         .pfp{
+                            border: 3px solid white;
                             height: 100%;
+                            box-sizing: border-box;
+
                             width: auto;
                             border-radius: 50%;
                             object-fit: cover;
