@@ -93,32 +93,8 @@ export default class Leaderboard extends React.PureComponent {
 
     renderLeaderboard() {
         if (player.length > 0) {
-            return player.map((player, index) => (
-                <LeaderboardItem
-                    key={index}
-                    rank={player.rank}
-                    username={player.username}
-                    points={player.points}
-                    words={player.words}
-                    pmounts={player.pmounts}
-                />
-            ))
-        } else {
             return (
-                <div className='add-friends'>
-                    <p>Sign in and invite your friends to see leaderboards!</p>
-                    <OutlineButton buttonText='Sign in'/>
-                </div>
-            )
-        }
-    }
-
-    render() {
-        return (
-            <section className="leaderboards" ref={this.scrollIntoViewElement}>
-                <fieldset className="container">
-                    <legend>leaderboard</legend>
-                        
+                <React.Fragment>
                     <div className="sorttabs-container">
                         <div className="sorttabs large">
                             <h1>Friends</h1>
@@ -140,9 +116,50 @@ export default class Leaderboard extends React.PureComponent {
                     </div>
                     <ul className="leaderboard">
                         {
+                            this.renderItems()
+                        }
+                        <li className="leaderboard-item">
+                            <div className="divider large">
+                                <p className='rank'>Invite Your Friends!</p>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </React.Fragment>
+            )
+        } else {
+            return (
+                <div className='add-friends'>
+                    <p>Sign in and invite your friends to see leaderboards!</p>
+                    <OutlineButton buttonText='Sign in'/>
+                </div>
+            )
+        }
+    }
+
+    renderItems = () => {
+        return player.map((player, index) => {
+            return (
+                <LeaderboardItem
+                    key={index}
+                    rank={player.rank}
+                    username={player.username}
+                    points={player.points}
+                    words={player.words}
+                    pmounts={player.pmounts}
+                />
+            )
+        })
+    }
+
+    render() {
+        return (
+            <section className="leaderboards" ref={this.scrollIntoViewElement}>
+                <fieldset className="container">
+                    <legend>leaderboard</legend>
+                        {
                             this.renderLeaderboard()
                         }
-                    </ul>          
                 </fieldset>
             </section> 
         )

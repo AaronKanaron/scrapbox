@@ -364,6 +364,23 @@ section.leaderboards .container{
         //firefox
         scrollbar-width: none;
 
+        .add-friends{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $color_inv;
+            cursor: pointer;
+            transition: filter 0.1s;
+            &:hover{
+                filter: brightness(1.2);
+            }
+        }
+
         li {
             box-sizing: border-box;
             width: 100%;

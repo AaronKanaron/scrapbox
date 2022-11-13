@@ -83,7 +83,7 @@ export default class Index extends React.PureComponent {
     /*- Initialize -*/
     componentDidMount() {
         this.setState({ isMounted: true }, () => {
-            this.mountWebsocket();
+            // this.mountWebsocket(); //! UNCOMMENT TO ENABLE WEBSOCKET
         })
     }
 
@@ -115,7 +115,7 @@ export default class Index extends React.PureComponent {
                             <div className="stripe" />
                             <div className="stripe" />
                         </div>
-                        <img className="logo" src="./logo/logo-big.svg"/>
+                        <img alt="logo" className="logo" src="./logo/logo-big.svg"/>
                     </div>
 
                     <div className="container">
@@ -138,7 +138,7 @@ export default class Index extends React.PureComponent {
                         </div> */}
                     </div>
                     
-                    <img className="chevron" src="./icons/down.svg" onClick={this.scroll}/>
+                    <img className="chevron" alt="Down" src="./icons/down.svg" onClick={this.scroll}/>
                 </section>
                 <div ref={this.scrollIntoViewElement}>
                     <Leaderboard />
