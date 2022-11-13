@@ -11,6 +11,22 @@ class LeaderboardItem extends React.PureComponent {
             pmounts: this.props.pmounts,
             words: this.props.words
         }
+
+        /*- Statics -*/
+        this.profiles = [
+            "./assets/profiles/bush.svg",
+            "./assets/profiles/clown.svg",
+            "./assets/profiles/knight.svg",
+            "./assets/profiles/mad.svg",
+        ];
+
+        /*- Function bindings -*/
+        this.getProfile = this.getProfile.bind(this);
+    }
+
+    /*- Get random profile image -*/
+    getProfile() {
+        return this.profiles[Math.floor(Math.random()*this.profiles.length)]
     }
     
     render() {
@@ -20,7 +36,7 @@ class LeaderboardItem extends React.PureComponent {
                     <p className='rank'>{this.props.rank}</p>
                     <div className="profile">
                         {this.props.rank <= 1 ? <img className="crown" src="./assets/crown.svg" alt="crown" /> : null}
-                        <img className="pfp" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"/>
+                        <img className="pfp" src={this.getProfile()}/>
                     </div>
                     <p className='username'>{this.props.username}</p>
                 </div>
