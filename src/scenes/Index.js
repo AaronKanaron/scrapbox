@@ -5,6 +5,7 @@ import Navbar from "../components/molecules/Navbar";
 import Leaderboard from "../components/molecules/Leaderboard";
 import "../styles/index.scss"
 import Globals from "../functional/Globals";
+import { EnterIcon } from "../components/molecules/Icons";
 
 /*- Constants -*/
 const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
@@ -139,9 +140,10 @@ export default class Index extends React.PureComponent {
                     <div className="container">
                         <div className="content">
                             <div className="buttons">
-                                <div className="joinbutton">
-                                    <input type="text" id="join" placeholder=" " maxLength={5} className="button one"></input>
+                                <div className="joinbutton button one">
+                                    <input type="text" id="join" placeholder=" " maxLength={5} className=""></input>
                                     <label htmlFor="join">Join</label>
+                                    <EnterIcon className="enter-icon"/>
                                 </div>
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />
                                 <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />

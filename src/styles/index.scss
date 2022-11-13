@@ -125,7 +125,7 @@ section.hero .container{
                 flex: 0 0 calc(50% - .5rem);
             }
 
-            a, input {
+            a, .joinbutton {
                 text-decoration: none;
                 &.large{
                     flex: 1 1 calc(100% - .5rem);
@@ -163,25 +163,46 @@ section.hero .container{
                         transition: transform .05s;
                     }
                 }
-
                 input {
                     color: $color !important;
                     // padding: 1rem;
+                    width: 100%;
                     outline: none;
                     cursor: pointer;
-                    transition: all .2s ease-in-out;
                     text-align: center;
                     margin: 0; padding: 0;
-                    font-size: 3em;
-                
+                    font-size: 2.5em;
+                    background: none;
+                    border: none;
+                    text-transform: lowercase;
+                    z-index: 5;                
                     &:focus ~ label, &:not(:placeholder-shown) ~ label{
                         top: 0;
                         color: #689d69;
-
+                        left: 50%;
                         &:after{
                             transform: scaleX(1);
                         }
                     }
+
+                    &:focus ~ .enter-icon, &:not(:placeholder-shown) ~ .enter-icon{
+                        opacity: 1;
+                        pointer-events: all;
+                        transform: translateX(0%);
+                    }
+                }
+
+                .enter-icon{
+                    position: absolute;
+                    height: 66%;
+                    right: 0;
+                    transform: translateX(-50%);
+                    margin: 1rem;
+                    opacity: 0;
+                    z-index: 2;
+                    pointer-events: none;
+                    transition: opacity .1s, transform 0.2s;
+                    // fill: #689d69;
                 }
             }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import SortIcon from "../molecules/Icons";
+import { SortIcon } from "../molecules/Icons";
 
 import LeaderboardItem from '../atoms/LeaderboardItem'
 import OutlineButton from '../atoms/OutlineButton'
