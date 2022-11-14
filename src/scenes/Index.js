@@ -23,10 +23,26 @@ export default class Index extends React.PureComponent {
         /*- Function bindings -*/
 		this.mountWebsocket     = this.mountWebsocket.bind(this);
 		this.scroll             = this.scroll.bind(this);
+        this.joinRoom           = this.joinRoom.bind(this);
 
         /*- Vars -*/
         this.websocket = null;
         this.websocketConnectionRetries = 0;
+        this.joinRoomErrorAnimation = [
+            {
+                transform: "translateX(-50px)",
+                //change color to red
+                color: "#FF0000"
+            },
+            {
+                transform: "translateX(50px)",
+
+            },
+            {
+                transform: "translateX(0)",
+
+            }
+        ]
 
         /*- Use Refs -*/
         this.scrollIntoViewElement = React.createRef();
@@ -79,6 +95,8 @@ export default class Index extends React.PureComponent {
                 return this.mountWebsocket();
             };
 		};
+
+        
 	}
 
     /*- Initialize -*/
@@ -101,9 +119,14 @@ export default class Index extends React.PureComponent {
             inline: "nearest"
         });
     }
-
-    joinRoom() {
-
+    
+    joinRoom(e) {
+        console.log("click: " + e.target.value)
+        if (e.target.value.length === 5 ){
+            // e.target.animate(this.joinRoomErrorAnimation, {duration: 200, iterations: 1});
+            e.target.style.animate = "errorBounce 0.2s linear 1";
+            console.log("animating " + e.target.style.animate)
+        } 
     }
     
     /*- Render to DOM -*/
@@ -127,7 +150,7 @@ export default class Index extends React.PureComponent {
                         <div className="content">
                             <div className="buttons">
                                 <form className="joinbutton button one" action="join">
-                                    <input type="text" id="join" placeholder=" " onClick={this.joinRoom()} maxLength={5} className=""></input>
+                                <input type="text" id="join" placeholder=" " onChange={this.joinRoom} maxLength={5} className=""></input>
                                     <label htmlFor="join">
                                         <EnterIcon/>
                                         Join

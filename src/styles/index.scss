@@ -344,6 +344,21 @@ section.hero .container{
     }
 }
 
+@keyframes errorBounce{
+    0%{
+        transform: translateX(0);
+        color: #cc231c;
+    }
+    50%{
+        transform: translateX(1rem);
+        color: #cc231c;
+    }
+    100%{
+        transform: translateX(0);
+        color: $color;
+    }
+}
+
 
 section.leaderboards .container{
     display: flex;
