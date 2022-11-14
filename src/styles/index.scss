@@ -275,10 +275,10 @@ section.hero .container{
                     @include element-color(rgb(69, 133, 135)); transform: rotateZ(random(2) - 2 + deg);
                 }
                 &.three { 
-                    &:after{ @include element-color(rgb(215, 153, 34)); transform: rotateZ(random(1) - 1 + deg);}
+                    @include element-color(rgb(215, 153, 34)); transform: rotateZ(random(2) - 2 + deg);
                 }
 
-                &.four { &:after{ @include element-color(rgb(204, 35, 28));  transform: rotateZ(random(1) - 1 + deg);}}    
+                &.four { @include element-color(rgb(204, 35, 28));  transform: rotateZ(random(2) - 2 + deg);}    
 
                 p {
                     display: flex;

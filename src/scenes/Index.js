@@ -122,9 +122,10 @@ export default class Index extends React.PureComponent {
     
     joinRoom(e) {
         console.log("click: " + e.target.value)
+        e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
         if (e.target.value.length === 5 ){
             // e.target.animate(this.joinRoomErrorAnimation, {duration: 200, iterations: 1});
-            e.target.style.animate = "errorBounce 0.2s linear 1";
+            e.target.style.animate = "errorBounce 0.2s linear";
             console.log("animating " + e.target.style.animate)
         } 
     }
