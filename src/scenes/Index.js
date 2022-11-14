@@ -102,22 +102,8 @@ export default class Index extends React.PureComponent {
         });
     }
 
-    validate_input(evt) {
-        var theEvent = evt || window.event;
+    joinRoom() {
 
-        // Handle paste
-        if (theEvent.type === 'paste') {
-            key = evt.clipboardData.getData('text/plain');
-        } else {
-        // Handle key press
-            var key = theEvent.keyCode || theEvent.which;
-            key = String.fromCharCode(key);
-        }
-        var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
-            theEvent.returnValue = false;
-            if(theEvent.preventDefault) theEvent.preventDefault();
-        }
     }
     
     /*- Render to DOM -*/
@@ -140,11 +126,13 @@ export default class Index extends React.PureComponent {
                     <div className="container">
                         <div className="content">
                             <div className="buttons">
-                                <div className="joinbutton button one">
-                                    <input type="text" id="join" placeholder=" " maxLength={5} className=""></input>
-                                    <label htmlFor="join">Join</label>
-                                    <EnterIcon className="enter-icon"/>
-                                </div>
+                                <form className="joinbutton button one" action="join">
+                                    <input type="text" id="join" placeholder=" " onClick={this.joinRoom()} maxLength={5} className=""></input>
+                                    <label htmlFor="join">
+                                        <EnterIcon/>
+                                        Join
+                                    </label>
+                                </form>
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />
                                 <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
