@@ -154,7 +154,7 @@ export default class Index extends React.PureComponent {
                                 <input type="text" id="join" placeholder=" " onChange={this.joinRoom} maxLength={5} className=""></input>
                                     <label htmlFor="join">
                                         <EnterIcon/>
-                                        Join
+                                        <p>Join</p>
                                     </label>
                                 </form>
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />

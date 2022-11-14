@@ -13,8 +13,7 @@ export class SortIcon extends React.PureComponent {
 
 export class EnterIcon extends React.PureComponent {
     render() {
-        return (
-            <svg className="icon enter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
-        )
+        // return (style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+            return <svg className="icon enter-icon" width="100%" height="100%" viewBox="0 0 2100 2100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" ><path d="M166,935L138,1162L583,1176L1010,1145L685,1477L817,1675L1100,1359L1427,1074L1094,671L847,463L677,600L1009,925L613,941L166,935Z" /><path d="M1350,1616L1283,1841L1707,1839L1896.52,1776.82L1937,1593L1987,1019L1946,530L1830,320L1357,254L1281,463L1620,489L1729,598L1710,928L1747,1352L1705,1578L1350,1616Z"/></svg>
     }
 }
