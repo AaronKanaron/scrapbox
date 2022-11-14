@@ -145,7 +145,7 @@ section.hero .container{
                     font-size: 3em;
                     text-transform: lowercase;
                     padding: 0 1rem;
-
+                    z-index: 2;
                     //transition tranform
                     transition: top .1s, color .1s;
 
@@ -230,8 +230,9 @@ section.hero .container{
                 align-items: center;
                 box-sizing: border-box ;
                 position: relative;
+                border: none;
 
-                &::before {
+                &::after {
                     position: absolute;
                     content: "";
                     width: 100%;
@@ -249,15 +250,15 @@ section.hero .container{
 
                 
                 &.one {
-                    &:after{ @include element-color(rgb(104, 156, 105)); transform: rotateZ(random(2) - 2 + deg); }
+                    &:after{ @include element-color(rgb(104, 156, 105)); transform: rotateZ(random(1) - 1 + deg); }
                 }
                 &.two {
-                    &:after{ @include element-color(rgb(69, 133, 135)); transform: rotateZ(random(2) - 2 + deg); }
+                    &:after{ @include element-color(rgb(69, 133, 135)); transform: rotateZ(random(1) - 1 + deg); }
                 }
                 &.three { 
-                    @include element-color(rgb(215, 153, 34));
+                    &:after{ @include element-color(rgb(215, 153, 34)); transform: rotateZ(random(1) - 1 + deg);}
                 }
-                &.four { border: #cc231c 10px solid; }    
+                &.four { &:after{ @include element-color(rgb(204, 35, 28));  transform: rotateZ(random(1) - 1 + deg);}}    
 
                 p {
                     display: flex;
