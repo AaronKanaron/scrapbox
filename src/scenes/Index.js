@@ -134,7 +134,7 @@ export default class Index extends React.PureComponent {
                                     </label>
                                 </form>
                                 <OutlineButton iconSrc="./icons/create.svg" buttonText="Create" additionalClass="two" href="room" />
-                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" />
+                                <OutlineButton iconSrc="./icons/browse.svg" className="large" buttonText="Browse Lobbies" additionalClass="three" href="browse" long={true} />
                                 <OutlineButton iconSrc="./icons/user.svg" buttonText="Sign up" additionalClass="four" href="sign-up" />
                             </div>
                         </div>

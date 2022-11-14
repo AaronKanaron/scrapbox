@@ -64,7 +64,6 @@ export default class CreateRoom extends React.PureComponent {
             if (!this.state.isMounted) { return; };
 
 			/*- Send create room request -*/
-            console.log("Sending packets");
 			this.websocket.send(JSON.stringify(e));
 		};
 
@@ -75,7 +74,6 @@ export default class CreateRoom extends React.PureComponent {
 
         /*- Websocket did unmount -*/
 		this.websocket.onclose = () => {
-            console.log("Websocket closed");
 
             /*- Retry connect -*/
             if (this.state.isMounted) {
