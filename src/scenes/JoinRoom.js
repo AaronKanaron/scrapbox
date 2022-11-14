@@ -53,7 +53,7 @@ export default class JoinRoom extends React.PureComponent {
 			destination: "join-room",
 			data: JSON.stringify({
 				jwt: this.jwtToken,
-                room_id: "3f97a3ed-bf8d-4906-8877-99f00025fc36"
+                room_id: "47595",
 			}),
 		};
 
@@ -62,7 +62,6 @@ export default class JoinRoom extends React.PureComponent {
             if (!this.state.isMounted) { return; };
 
 			/*- Send join room request -*/
-            console.log("Sending packets");
 			this.websocket.send(JSON.stringify(e));
 		};
 
