@@ -10,7 +10,7 @@ import JoinRoom from "./scenes/JoinRoom";
 // molecules
 import Modal from "./components/molecules/Modal";
 
-import "./styles/universal.scss";
+// import "./styles/universal.scss";
 
 import {
     BrowserRouter,
@@ -26,8 +26,8 @@ export default function App() {
                 <Route exact path="/" element={ <Index /> } />
                 <Route exact path="/*" element={ <Error404 /> } />
                 <Route exact path="/sign-up" element={ <SignUp /> } />
-                <Route exact path="/room" element={ <CreateRoom /> } />
-                <Route exact path="/join" element={ <JoinRoom /> } />
+                <Route exact path="/create" element={ <CreateRoom /> } />
+                <Route exact path="/room" element={ <JoinRoom /> } />
             </Routes>
         </BrowserRouter>
     );

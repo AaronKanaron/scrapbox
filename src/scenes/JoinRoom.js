@@ -4,6 +4,7 @@ import Navbar from "../components/molecules/Navbar";
 import "../styles/index.scss"
 import Cookies from "js-cookie";
 import Globals from "../functional/Globals";
+import "../styles/joinroom.scss";
 
 /*- Constants -*/
 const MAX_WEBSOCKET_CONNECTION_RETRIES = 5;
@@ -97,19 +98,35 @@ export default class JoinRoom extends React.PureComponent {
     /*- Render to DOM -*/
     render() {
         return (
-            <main>
-                {/* <Navbar page="home" /> */}
-                <h1>Roomcode
-                </h1>
-                {/* <div className="logo">
-                    <div className="stripes">
-                        <div className="stripe" />
-                        <div className="stripe" />
-                        <div className="stripe" />
-                        <div className="stripe" />
+            <main className="joinRoom">
+                <div className="player-container">
+                    <div className="logo-container">
+                        <img src="/logo/logo-black.svg" alt="logo" className="logo"/>
                     </div>
-                    <img className="logo" src="./logo/logo-big.svg"/>
-                </div> */}
+
+                    <div className="players">
+                        <h1>Players</h1>
+                        <div className="player">
+                            
+                            {/* <img src="/assets/profiles/Knight.svg" alt="player"/> */}
+                        </div>    
+                    </div>
+                </div>
+
+                <div className="room-container">
+                    <div className="tabs">
+                        <div className="tab">
+                            <h1>Game</h1>
+                        </div>
+                        <div className="tab">
+                            <h1>Chat</h1>
+                        </div>
+                    </div>
+
+                    <div className="room-content">
+                    
+                    </div>
+                </div>
             </main>
         )
     }
