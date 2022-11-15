@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="./.github/screenshot.png" alt="Scrapbox" />
+  <img src="./.github/screen.png" alt="Scrapbox" />
 
   <!-- &#xa0; -->
 

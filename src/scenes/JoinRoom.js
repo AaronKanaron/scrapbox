@@ -98,9 +98,10 @@ export default class JoinRoom extends React.PureComponent {
     render() {
         return (
             <main>
-                <Navbar page="home" />
-
-                <div className="logo">
+                {/* <Navbar page="home" /> */}
+                <h1>Roomcode
+                </h1>
+                {/* <div className="logo">
                     <div className="stripes">
                         <div className="stripe" />
                         <div className="stripe" />
@@ -108,7 +109,7 @@ export default class JoinRoom extends React.PureComponent {
                         <div className="stripe" />
                     </div>
                     <img className="logo" src="./logo/logo-big.svg"/>
-                </div>
+                </div> */}
             </main>
         )
     }
