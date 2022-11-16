@@ -164,9 +164,15 @@ class PlayerSprite extends React.PureComponent {
 
         this.frames = [
             "/assets/frames/circle.svg",
-            // "/assets/frames/rectangle-vertical.svg",
-            // "/assets/frames/square.svg",
-            // "/assets/frames/triangle.svg",
+            "/assets/frames/rectangle-vertical.svg",
+            "/assets/frames/square.svg",
+            "/assets/frames/triangle.svg",
+        ]
+        this.framesClasses = [
+            "circle",
+            "rectangle-vertical.svg",
+            "square.svg",
+            "triangle.svg",
         ]
 
         this.profiles = [
@@ -192,6 +198,9 @@ class PlayerSprite extends React.PureComponent {
     getFrame() {
         return this.frames[Math.floor(Math.random()*this.frames.length)]
     }
+    getFrameClass() {
+        return this.framesClasses[Math.floor(Math.random()*this.framesClasses.length)]
+    }
     getProfile() {
         return this.profiles[Math.floor(Math.random()*this.profiles.length)]
     }
@@ -202,7 +211,7 @@ class PlayerSprite extends React.PureComponent {
             <div className="player" style={{ "left": this.getPosX(), "top": this.getPosY() }}>
                 <img src={this.getFrame()} alt="player"/>
                 <div className="mask">
-                    <img src={this.getProfile()}/>
+                    {/* <img src={this.getProfile()}/> */}
                 </div>
             </div>
         );
