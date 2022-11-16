@@ -109,10 +109,11 @@ export default class JoinRoom extends React.PureComponent {
                     </div>
 
                     <div className="players">
-                        <div className="player">
-                            
-                            {/* <img src="/assets/profiles/Knight.svg" alt="player"/> */}
-                        </div>    
+                        {distributePoints(50, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
+                        {/* <PlayerSprite x={0} y={100} />
+                        <PlayerSprite x={100} y={0} />
+                        <PlayerSprite x={100} y={100} />
+                        <PlayerSprite x={0} y={0} /> */}
                     </div>
                 </div>
 
@@ -133,4 +134,71 @@ export default class JoinRoom extends React.PureComponent {
             </main>
         )
     }
+}
+
+/*- Players in their frames on the whiteboard -*/
+class PlayerSprite extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        /*- Statics -*/
+        this.posX = 0;
+        this.posY = 0;
+        this.globalMarginTop = 30;
+        this.globalMarginBottom = 20;
+        this.globalMarginLeft = 10;
+        this.globalMarginRight = 10;
+
+        /*- Prop getters -*/
+        this.inputX = this.props.x;
+        this.inputY = this.props.y;
+
+        /*- Function bindings -*/
+        this.getPosX = this.getPosX.bind(this);
+        this.getPosY = this.getPosY.bind(this);
+    }
+
+    /*- Getters for pos -*/
+    getPosX() {
+        return wrapNumber(this.inputX, 0, 100, 0 + this.globalMarginLeft, 100 - this.globalMarginRight).toString() + "%"
+    }
+    getPosY() {
+        return wrapNumber(this.inputY, 0, 100, 0 + this.globalMarginTop, 100 - this.globalMarginBottom).toString() + "%"
+    }
+
+    /*- Render self -*/
+    render() {
+        return (
+            <div className="player" style={{ "left": this.getPosX(), "top": this.getPosY() }}>
+                {/* <img src="/assets/profiles/Knight.svg" alt="player"/> */}
+            </div>
+        );
+    };
+}
+
+/*- Wrap number between two ranges -*/
+function wrapNumber(number, input_min, input_max, output_min, output_max) {
+    return output_min + (output_max - output_min) * ((number - input_min) / (input_max - input_min));
+}
+
+/*- Distribute points -*/
+function distributePoints(radius, points) {
+    let final = [];
+
+    /*- New point has to be min radius away from all other points -*/
+    for (let i = 0; i < points; i++) {
+        let point = [Math.random() * 100, Math.random() * 100];
+        let tries = 0;
+
+        /*- Check if point is too close to other points -*/
+        while (final.some(([x, y]) => Math.hypot(x - point[0], y - point[1]) < radius)) {
+            tries += 1;
+            if (tries > 100) { break; };
+            point = [Math.random() * 100, Math.random() * 100];
+        };
+
+        final.push(point);
+    }
+
+    return final;
 }

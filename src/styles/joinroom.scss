@@ -64,12 +64,14 @@ main.joinRoom{
         .player{
             position: absolute;
             // width: 10%;
-            height: 5rem;
+            height: 15%;
             aspect-ratio: 1;
             border-radius: 50%;
             // left: calc(100% - 5rem); //size, thing size, padding
             // top: calc(2% * 5rem); //size, thing size, padding
             background: hsl(39, 16%, 45%);
+
+            transform: translate(-50%, -50%);
         }
     }
 }
