@@ -99,13 +99,16 @@ export default class JoinRoom extends React.PureComponent {
     render() {
         return (
             <main className="joinRoom">
+
                 <div className="player-container">
+                    <div className="background">
+                        <img src="/assets/board.svg" className="background__image" />
+                    </div>
                     <div className="logo-container">
-                        <img src="/logo/logo-black.svg" alt="logo" className="logo"/>
+                        <img src="/logo/scrapbox-bordered.svg" alt="logo" className="logo"/>
                     </div>
 
                     <div className="players">
-                        <h1>Players</h1>
                         <div className="player">
                             
                             {/* <img src="/assets/profiles/Knight.svg" alt="player"/> */}
