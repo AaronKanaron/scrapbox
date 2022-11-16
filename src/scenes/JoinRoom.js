@@ -29,7 +29,11 @@ export default class JoinRoom extends React.PureComponent {
 
         /*- Use Refs -*/
         this.scrollIntoViewElement = React.createRef()
+
+        
 	}
+
+    
 
     /*- Initialize websocket connection -*/
 	mountWebsocket() {
@@ -111,7 +115,7 @@ export default class JoinRoom extends React.PureComponent {
                     </div>
 
                     <div className="players">
-                        {distributePoints(50, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
+                        {distributePoints(30, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
                         {/* <PlayerSprite x={0} y={100} />
                         <PlayerSprite x={100} y={0} />
                         <PlayerSprite x={100} y={100} />
@@ -157,6 +161,24 @@ class PlayerSprite extends React.PureComponent {
         /*- Function bindings -*/
         this.getPosX = this.getPosX.bind(this);
         this.getPosY = this.getPosY.bind(this);
+
+        this.frames = [
+            "/assets/frames/circle.svg",
+            // "/assets/frames/rectangle-vertical.svg",
+            // "/assets/frames/square.svg",
+            // "/assets/frames/triangle.svg",
+        ]
+
+        this.profiles = [
+            "./assets/profiles/bush.svg",
+            "./assets/profiles/clown.svg",
+            "./assets/profiles/knight.svg",
+            "./assets/profiles/mad.svg",
+        ];
+
+        this.getProfile = this.getProfile.bind(this);
+        this.getFrame = this.getFrame.bind(this);
+
     }
 
     /*- Getters for pos -*/
@@ -167,11 +189,21 @@ class PlayerSprite extends React.PureComponent {
         return wrapNumber(this.inputY, 0, 100, 0 + this.globalMarginTop, 100 - this.globalMarginBottom).toString() + "%"
     }
 
+    getFrame() {
+        return this.frames[Math.floor(Math.random()*this.frames.length)]
+    }
+    getProfile() {
+        return this.profiles[Math.floor(Math.random()*this.profiles.length)]
+    }
+
     /*- Render self -*/
     render() {
         return (
             <div className="player" style={{ "left": this.getPosX(), "top": this.getPosY() }}>
-                {/* <img src="/assets/profiles/Knight.svg" alt="player"/> */}
+                <img src={this.getFrame()} alt="player"/>
+                <div className="mask">
+                    <img src={this.getProfile()}/>
+                </div>
             </div>
         );
     };

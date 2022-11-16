@@ -18,14 +18,6 @@ import {
     Route,
 } from "react-router-dom";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React from 'react';
-import CreateRoom from './pages/CreateRoom';
-import Error404 from './pages/Error404';
-import Home from './pages/Home';
-import Index from './pages/Index';
-import JoinRoom from './pages/JoinRoom';
-import SignUp from './pages/SignUp';
 
 export default function App() {
     return (
