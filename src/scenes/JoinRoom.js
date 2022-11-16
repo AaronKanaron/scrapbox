@@ -54,9 +54,11 @@ export default class JoinRoom extends React.PureComponent {
 			destination: "join-room",
 			data: JSON.stringify({
 				jwt: this.jwtToken,
-                room_id: "47595",
+                room_id: 47595,
 			}),
 		};
+
+
 
         /*- Websocket did mount -*/
 		this.websocket.onopen = () => {
@@ -125,7 +127,6 @@ export default class JoinRoom extends React.PureComponent {
                             <h1>Chat</h1>
                         </div>
                     </div>
-
                     <div className="room-content">
                     
                     </div>
