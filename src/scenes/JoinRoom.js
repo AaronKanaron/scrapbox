@@ -107,10 +107,10 @@ export default class JoinRoom extends React.PureComponent {
 
                 <div className="room-container">
                     <div className="tabs">
-                        <div className="tab" onClick={() => this.setState({ openTab: "settings" })}>
+                        <div className={"tab" + (this.state.openTab == "settings" ? " active" : "")} onClick={() => this.setState({ openTab: "settings" })}>
                             <h1>Settings</h1>
                         </div>
-                        <div className="tab" onClick={() => this.setState({ openTab: "chat" })}>
+                        <div className={"tab" + (this.state.openTab == "chat" ? " active" : "")} onClick={() => this.setState({ openTab: "chat" })}>
                             <h1>Chat</h1>
                         </div>
                     </div>

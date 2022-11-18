@@ -139,6 +139,10 @@ main.joinRoom{
             &:hover{
                 background-color: aqua;
             }
+
+            &.active {
+                background-color: aquamarine;
+            }
         }
     }
 
