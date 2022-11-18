@@ -4,6 +4,8 @@ import Navbar from "../components/molecules/Navbar";
 import "../styles/index.scss"
 import Cookies from "js-cookie";
 import Globals from "../functional/Globals";
+import SettingsTab from "./tabs/SettingsTab";
+import ChatTab from "./tabs/ChatTab";
 import "../styles/joinroom.scss";
 
 /*- Constants -*/
@@ -17,6 +19,7 @@ export default class JoinRoom extends React.PureComponent {
         /*- Changeable -*/
 		this.state = {
             isMounted: false,
+            openTab: "settings",
         };
 
         /*- Function bindings -*/
@@ -29,11 +32,7 @@ export default class JoinRoom extends React.PureComponent {
 
         /*- Use Refs -*/
         this.scrollIntoViewElement = React.createRef()
-
-        
 	}
-
-    
 
     /*- Initialize websocket connection -*/
 	mountWebsocket() {
@@ -58,11 +57,9 @@ export default class JoinRoom extends React.PureComponent {
 			destination: "join-room",
 			data: JSON.stringify({
 				jwt: this.jwtToken,
-                room_id: 47595,
+                room_id: "86440",
 			}),
 		};
-
-
 
         /*- Websocket did mount -*/
 		this.websocket.onopen = () => {
@@ -106,34 +103,19 @@ export default class JoinRoom extends React.PureComponent {
         return (
             <main className="joinRoom">
 
-                <div className="player-container">
-                    <div className="background">
-                        <img src="/assets/board.svg" className="background__image" />
-                    </div>
-                    <div className="logo-container">
-                        <img src="/logo/scrapbox-bordered.svg" alt="logo" className="logo"/>
-                    </div>
-
-                    <div className="players">
-                        {distributePoints(30, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
-                        {/* <PlayerSprite x={0} y={100} />
-                        <PlayerSprite x={100} y={0} />
-                        <PlayerSprite x={100} y={100} />
-                        <PlayerSprite x={0} y={0} /> */}
-                    </div>
-                </div>
+                <Board />
 
                 <div className="room-container">
                     <div className="tabs">
-                        <div className="tab">
-                            <h1>Game</h1>
+                        <div className="tab" onClick={() => this.setState({ openTab: "settings" })}>
+                            <h1>Settings</h1>
                         </div>
-                        <div className="tab">
+                        <div className="tab" onClick={() => this.setState({ openTab: "chat" })}>
                             <h1>Chat</h1>
                         </div>
                     </div>
                     <div className="room-content">
-                    
+                        {this.state.openTab == "settings" ? <SettingsTab /> : <ChatTab />}
                     </div>
                 </div>
             </main>
@@ -240,7 +222,31 @@ function distributePoints(radius, points) {
         };
 
         final.push(point);
-    }
+    };
 
     return final;
+}
+
+/*- We need to have board as a individual component (PureComponent) to prevent re-renders on tab switch -*/
+class Board extends React.PureComponent {
+    render() {
+        return (
+            <div className="player-container">
+                <div className="background">
+                    <img src="/assets/board.svg" className="background__image" />
+                </div>
+                <div className="logo-container">
+                    <img src="/logo/scrapbox-bordered.svg" alt="logo" className="logo"/>
+                </div>
+
+                <div className="players">
+                    {distributePoints(30, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
+                    {/* <PlayerSprite x={0} y={100} />
+                    <PlayerSprite x={100} y={0} />
+                    <PlayerSprite x={100} y={100} />
+                    <PlayerSprite x={0} y={0} /> */}
+                </div>
+            </div>
+        )
+    }
 }
