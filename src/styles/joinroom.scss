@@ -1,3 +1,4 @@
+@import "universal.scss";
 
 
 main.joinRoom{
@@ -93,7 +94,7 @@ main.joinRoom{
                 mask-image: url(../../public/assets/frames/circle_mask.svg);
                 mask-size: cover;
                 mask-repeat: no-repeat;
-                background-image: url(../../public/assets/profiles/knight.svg);
+                background-image: url(../../public/assets/profiles/Knight.svg);
                 
                 &:after{
                     content: "";
@@ -137,11 +138,14 @@ main.joinRoom{
             }
 
             &:hover{
-                background-color: aqua;
+                background-color: lighten($color: $background, $amount: 10);
             }
 
             &.active {
-                background-color: aquamarine;
+                background-color: lighten($color: $special-color, $amount: 0);
+            }
+            &.active:hover {
+                background-color: lighten($color: $special-color, $amount: 5);
             }
         }
     }

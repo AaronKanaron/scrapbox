@@ -1,12 +1,10 @@
-$background: #f5efd5;
-$special-color: #cc231c;
-$color: #071013;
-$color_inv: invert(#071013);
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import "universal.scss";
 
 body{
     // background-color: ;
@@ -272,6 +270,16 @@ section.hero .container{
                     // background-color: $color;
                     background-repeat: no-repeat;
                     background-position: right;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    // background-color: $color;
+                    background-repeat: no-repeat;
+                    background-position: left;
 
                 }
                 border-image-slice: 30;
