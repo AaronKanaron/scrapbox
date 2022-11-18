@@ -78,11 +78,11 @@ main.joinRoom{
             justify-content: center;
             align-items: center;
 
-            img{
-                // position: absolute;
-                // width: 90%;
-                // height: 90%;
-            }
+            // img{
+            //     // position: absolute;
+            //     // width: 90%;
+            //     // height: 90%;
+            // }
             animation: dingle 2s normal forwards ease-in-out;
             .mask{
                 position: absolute;
@@ -96,6 +96,7 @@ main.joinRoom{
                 // mask-image: url(../../public/assets/frames/circle_mask.svg);
                 mask-size: cover;
                 mask-repeat: no-repeat;
+                background-image: url(../../public/assets/profiles/knight.svg);
                 // background: #ffffff;
                 
                 &.circle{
@@ -138,28 +139,28 @@ $dingle-amount: 20deg;
     0% {
         transform: translate(-50%, -50%) rotate($dingle-amount);
     }
-    13% {
+    15% {
         transform: translate(-50%, -50%) rotate(-$dingle-amount);
     }
-    25% {
+    28% {
         transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.5);
     }
-    38% {
+    41% {
         transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount /  1.35);
     }
-    45% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.25);
+    54% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.22);
     }
-    55% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.25);
+    67% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.11);
     }
-    63% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.125);
+    82% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.05);
     }
-    70% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.125);
+    95% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.02);
     }
-    76% {
+    100% {
         transform: translate(-50%, -50%) rotate(0);
 
     }
