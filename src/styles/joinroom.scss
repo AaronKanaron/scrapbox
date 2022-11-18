@@ -65,7 +65,7 @@ main.joinRoom{
         .player{
             position: absolute;
             // width: 10%;
-            height: 17%;
+            height: 10rem;
             aspect-ratio: 1;
             // border-radius: 50%;
             // left: calc(100% - 5rem); //size, thing size, padding
@@ -73,15 +73,17 @@ main.joinRoom{
             // background: hsl(39, 16%, 45%);
 
             transform: translate(-50%, -50%);
+            transform-origin: top left;
             display: flex;
             justify-content: center;
             align-items: center;
 
             img{
                 // position: absolute;
-                width: 100%;
-                height: 100%;
+                // width: 90%;
+                // height: 90%;
             }
+            animation: dingle 1s normal forwards linear;
             .mask{
                 position: absolute;
                 width: 100%;
@@ -91,24 +93,75 @@ main.joinRoom{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                mask-image: url(../../public/assets/frames/circle_mask.svg);
+                // mask-image: url(../../public/assets/frames/circle_mask.svg);
                 mask-size: cover;
                 mask-repeat: no-repeat;
-                background-image: url(../../public/assets/profiles/Knight.svg);
+                // background: #ffffff;
                 
-                &:after{
-                    content: "";
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    z-index: 1;
+                &.circle{
+                    mask-image: url(../../public/assets/frames/frame-masks/circle.svg);
+                }
+                &.rectangle-vertical{
+                    mask-image: url(../../public/assets/frames/frame-masks/rectangle-vertical.svg);
+                }
+                &.square{
+                    mask-image: url(../../public/assets/frames/frame-masks/square.svg);
+                }
+                &.triangle{
+                    mask-image: url(../../public/assets/frames/frame-masks/triangle.svg);
+                }  
+
+                img{
+                    width: 70%;
+                    height: auto;
+                }
+        
+                // &:after{
+                //     content: "";
+                //     position: absolute;
+                //     width: 100%;
+                //     height: 100%;
+                //     top: 0;
+                //     left: 0;
+                //     z-index: 1;
                     
 
-                }
+                // }
             }
         }
+    }
+}
+
+$dingle-amount: -23deg;
+@keyframes dingle {
+
+    0% {
+        transform: translate(-50%, -50%) rotate($dingle-amount);
+    }
+    13% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount);
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.5);
+    }
+    38% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount /  1.5);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.3125);
+    }
+    63% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.3125);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.125);
+    }
+    88% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.125);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0);
+
     }
 }
 
