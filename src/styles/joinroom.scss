@@ -73,7 +73,7 @@ main.joinRoom{
             // background: hsl(39, 16%, 45%);
 
             transform: translate(-50%, -50%);
-            transform-origin: top left;
+            transform-origin: top;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -83,7 +83,7 @@ main.joinRoom{
                 // width: 90%;
                 // height: 90%;
             }
-            animation: dingle 1s normal forwards linear;
+            animation: dingle 2s normal forwards ease-in-out;
             .mask{
                 position: absolute;
                 width: 100%;
@@ -132,7 +132,7 @@ main.joinRoom{
     }
 }
 
-$dingle-amount: -23deg;
+$dingle-amount: 20deg;
 @keyframes dingle {
 
     0% {
@@ -145,21 +145,21 @@ $dingle-amount: -23deg;
         transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.5);
     }
     38% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount /  1.5);
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount /  1.35);
     }
-    50% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.3125);
+    45% {
+        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.25);
+    }
+    55% {
+        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.25);
     }
     63% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.3125);
-    }
-    75% {
         transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.125);
     }
-    88% {
+    70% {
         transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.125);
     }
-    100% {
+    76% {
         transform: translate(-50%, -50%) rotate(0);
 
     }
