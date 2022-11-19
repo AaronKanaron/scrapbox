@@ -21,22 +21,25 @@ body{
 
 
 .logo{
+    $logo-size: 20rem;
     padding-top: 1rem;
     box-sizing: border-box;
     width: 100%;
+    height: $logo-size;
     display: flex;
     justify-content: center;
     // align-items: center;
-
+    position: relative;
     .stripes{
         position: absolute;
         width: 100%;
-        padding-top: 1.75rem;
+        height: calc(100% / 3);
+        padding-top: .9rem;
         display: flex;
         flex-direction: column;
         z-index: -1;
-        height: 6.5vw;
-        gap: .4vw;
+        // height: 6.5vw;
+        gap: 5%;
         
 
         .stripe{
@@ -52,7 +55,29 @@ body{
     }
 
     img{
-        width: 33%;
+        height: $logo-size;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 1050px){
+        $logo-size: 10rem;
+        padding-top: 1rem;
+        height: $logo-size;
+        .stripes{
+            height: $logo-size;
+            height: calc(100% / 3);
+            padding-top: .5rem;
+            .stripe{
+                height: 100%;
+            }
+        }
+
+        img{
+            height: $logo-size;
+            width: 100%;
+        }
     }
 }
 
@@ -128,6 +153,14 @@ section.hero .container{
                 &.large{
                     flex: 1 1 calc(100% - 1rem);
                 }
+            }
+
+            @media screen and (max-width: 1050px){
+                flex-direction: row;
+                gap: 1rem;
+                >*{
+                    flex: 1 1 calc(100% - 1rem);
+                }                
             }
 
             

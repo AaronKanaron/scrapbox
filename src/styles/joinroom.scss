@@ -7,9 +7,9 @@ main.joinRoom{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 1rem;
+    padding: 1rem 4rem;
     box-sizing: border-box;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .player-container{
@@ -167,39 +167,62 @@ $dingle-amount: 20deg;
 }
 
 .room-container{
-    border: 5px solid black;
-    // border-radius: 1rem;
+    
     box-sizing: border-box;
     flex: 1;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    background-color: #cec5b6;
+    &:after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+
+        border-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 2100 2100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g transform="matrix(1.0214,0,0,1.02289,-25.535,-18.4121)"><path d="M25,2071L68,18L2057,47L2081,2033L25,2071ZM202,77L194,1976L1899,1976L1882,110L202,77Z" style="fill:hsl(39, 16%, 30%);"/></g></svg>');
+        border-image-slice: 30 80;
+        border-image-width: 2rem;
+        border-image-repeat: stretch;
+        border-image-outset: 1rem 1.3rem;
+    }
+
     .tabs{
         flex: 10% 0;
         display: flex;
         flex-direction: row;
         // box-sizing: border-box;
-        border-bottom: 5px solid black;
+        border-bottom: 1rem solid hsl(39, 16%, 30%);
+
+        
+
         .tab{
             cursor: pointer;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            
+            // transition: all .05s ease-in-out;
+
             &:nth-child(even) {
-                border-left: 5px solid black;
+                border-left: 1rem solid hsl(39, 16%, 30%);
             }
 
             &:hover{
-                background-color: lighten($color: $background, $amount: 10);
+                background-color: #d1cabf;
             }
 
             &.active {
-                background-color: lighten($color: $special-color, $amount: 0);
+                background-color: lighten($color: hsl(38, 16%, 30%), $amount: 0);
+                color: hsl(37, 44%, 93%);
             }
             &.active:hover {
-                background-color: lighten($color: $special-color, $amount: 5);
+                // background-color: lighten($color: $special-color, $amount: 5);
             }
         }
     }
