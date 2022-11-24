@@ -30,7 +30,6 @@ export default class ChatTab extends React.PureComponent {
     render() {
         return (
             <div className="chat-tab">
-                <p>Chat</p>
             </div>
         )
     }
