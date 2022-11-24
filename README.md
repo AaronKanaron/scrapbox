@@ -1,5 +1,4 @@
 <div align="center" id="top"> 
-  <img src="./.github/screen-new.png" alt="Scrapbox" />
 
   <!-- &#xa0; -->
 
@@ -23,6 +22,7 @@
 </p>
 
 <!-- Status -->
+  <img src="./.github/screen-new.png" alt="Scrapbox" />
 
 <h4 align="center"> 
 	🚧  Scrapbox - Pågående byggnation...  🚧
