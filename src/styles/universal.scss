@@ -5,7 +5,89 @@ $special-color: #cc231c;
 $color: #071013;
 $color_inv: invert(#071013);
 
+$cursor: hsl(39, 16%, 30%);
+
 html,body, #root, main{
     // height: 100%;
     // width:100%;
+}
+
+
+
+//inputs & toggles
+label.switch {
+    $switch-color: #777;
+    $switch-color-active: $special-color;
+
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
+    input {
+        display:none;
+        width: 0; height: 0;
+
+        &:checked + span.slider {
+            background-color: $switch-color-active;
+            // animation: switch-pulse .3s linear;
+
+            &:before{
+                transform: translateX(26px);
+            }
+        }
+
+        &:hover + .slider{
+            background: darken($color: $switch-color, $amount: 10);
+        }
+
+        
+    }
+
+    .slider{
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        outline: 8px solid #cec5b6;
+        background-color: $switch-color;
+        transition: background-color .4s, outline;
+        border-radius: 34px;
+        // animation: switch-pulse-out .3s linear;
+
+        &:before{
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+    }
+    @keyframes switch-pulse {
+        from{
+            outline-width: 1px;
+            outline-color: $switch-color-active;
+        }
+        to{
+            outline-width: 8px;
+            outline-color: #cec5b6;
+        }
+    }
+    @keyframes switch-pulse-out {
+        from{
+            outline-width: 1px;
+            // outline-color: darken($color: $switch-color, $amount: 10);
+            outline-color: $switch-color-active;
+        }
+        to{
+            outline-width: 6px;
+            outline-color: #cec5b6;
+        }
+    }
 }

@@ -35,9 +35,11 @@ export default class SettingsTab extends React.PureComponent {
                 <div class="settings">
                     <div class="setting">
                         <h2 class="setting-name">Self-vote</h2>
-                        <Switch label="canver">
+                        <div className="setting-value">
+                            <Switch label="canver">
 
-                        </Switch>
+                            </Switch>
+                        </div>
                     </div>
                 </div>
             </div>
