@@ -20,10 +20,13 @@ export default class JoinRoom extends React.PureComponent {
 		this.state = {
             isMounted: false,
             openTab: "settings",
+            players: [],
+            pipe: 0
         };
 
         /*- Function bindings -*/
 		this.mountWebsocket     = this.mountWebsocket.bind(this);
+		this.addPlayer          = this.addPlayer.bind(this);
 
         /*- Vars -*/
         this.websocket = null;
@@ -32,6 +35,7 @@ export default class JoinRoom extends React.PureComponent {
 
         /*- Use Refs -*/
         this.scrollIntoViewElement = React.createRef()
+        this.pipe                  = React.createRef()
 	}
 
     /*- Initialize websocket connection -*/
@@ -48,21 +52,20 @@ export default class JoinRoom extends React.PureComponent {
             return;
         } else if (this.websocket == null) {
             return this.mountWebsocket();
-        } else {
-            console.log("Websocket mounted!");
-        };
+        }
 
         /*- Websocket data -*/
 		const e = {
 			destination: "join-room",
 			data: JSON.stringify({
 				jwt: this.jwtToken,
-                room_id: "86440",
+                room_id: "95415",
 			}),
 		};
 
         /*- Websocket did mount -*/
 		this.websocket.onopen = () => {
+            console.log("Websocket connection established!"); 
             if (!this.state.isMounted) { return; };
 
 			/*- Send join room request -*/
@@ -89,6 +92,7 @@ export default class JoinRoom extends React.PureComponent {
     componentDidMount() {
         /*- Fetch create-room endpoint -*/
         this.setState({ isMounted: true }, () => {
+            console.log("Will mount");
             this.mountWebsocket();
         })
     }
@@ -98,12 +102,43 @@ export default class JoinRoom extends React.PureComponent {
         this.setState({ isMounted: true })
     }
 
+    /*- Add player -*/
+    addPlayer(player) {
+        
+        this.setState({
+            pipe: [player[0] + 5],
+            players: [...this.state.players, player]
+        }, () => {
+            console.log(this.state.players);
+            /*- Play pipe animation -*/
+            this.pipe.current.animate([
+                { "transform": "translateY(0)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(14rem)" },
+                { "transform": "translateY(0)" },
+            ], {
+                duration: 8000,
+                iterations: 1,
+                easing: "cubic-bezier(0.1, 0.7, 1, 0.1)"
+            })
+        });
+    }
+
     /*- Render to DOM -*/
     render() {
         return (
             <main className="joinRoom">
-
-                <Board />
+                <button onClick={() => this.addPlayer([Math.random()*100, Math.random()*100])}>add player</button>
+                <Board players={this.state.players.map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} username="username" />)} />
+                <div ref={this.pipe} className="pipe-container">
+                    <PlayerPipe x={this.state.pipe} />
+                </div>
 
                 <div className="room-container">
                     <div className="tabs">
@@ -114,6 +149,7 @@ export default class JoinRoom extends React.PureComponent {
                             <h1>Chat</h1>
                         </div>
                     </div>
+
                     <div className="room-content">
                         {this.state.openTab == "settings" ? <SettingsTab /> : <ChatTab />}
                     </div>
@@ -131,14 +167,15 @@ class PlayerSprite extends React.PureComponent {
         /*- Statics -*/
         this.posX = 0;
         this.posY = 0;
-        this.globalMarginTop = 30;
-        this.globalMarginBottom = 20;
-        this.globalMarginLeft = 10;
-        this.globalMarginRight = 10;
+        this.globalMarginTop = 20;
+        this.globalMarginBottom = 30;
+        this.globalMarginLeft = 2;
+        this.globalMarginRight = 15;
 
         /*- Prop getters -*/
         this.inputX = this.props.x;
         this.inputY = this.props.y;
+        this.name = this.props.username;
 
         /*- Function bindings -*/
         this.getPosX = this.getPosX.bind(this);
@@ -188,25 +225,27 @@ class PlayerSprite extends React.PureComponent {
         return this.profiles[Math.floor(Math.random()*this.profiles.length)]
     }
 
-
     /*- Render self -*/
     render() {
         return (
-            <div className="player" style={{ "left": this.getPosX(), "top": this.getPosY() }}>
-                <img src={this.frames[this.index]} alt="player"/>
-                <div className={`mask ${this.framesClasses[this.index]}`}>
-                    <img src={this.profiles[this.index]}/>
+            <div className="player-wrapper" style={{ "left": this.getPosX(), "top": this.getPosY() }}>
+                <div className="player">
+
+                    <img src={this.frames[this.index]} alt="player"/>
+                    <div className={`mask ${this.framesClasses[this.index]}`}>
+                        <img src={this.profiles[this.index]}/>
+                    </div>
+
                 </div>
+                <p>{this.name}</p>
             </div>
         );
     };
 }
-
 /*- Wrap number between two ranges -*/
 function wrapNumber(number, input_min, input_max, output_min, output_max) {
     return output_min + (output_max - output_min) * ((number - input_min) / (input_max - input_min));
 }
-
 /*- Distribute points -*/
 function distributePoints(radius, points) {
     let final = [];
@@ -228,7 +267,6 @@ function distributePoints(radius, points) {
 
     return final;
 }
-
 /*- We need to have board as a individual component (PureComponent) to prevent re-renders on tab switch -*/
 class Board extends React.PureComponent {
     render() {
@@ -242,12 +280,37 @@ class Board extends React.PureComponent {
                 </div>
 
                 <div className="players">
-                    {distributePoints(30, 5).map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} />)}
+                    {this.props.players}
                     {/* <PlayerSprite x={0} y={100} />
                     <PlayerSprite x={100} y={0} />
                     <PlayerSprite x={100} y={100} />
                     <PlayerSprite x={0} y={0} /> */}
                 </div>
+            </div>
+        )
+    }
+}
+class PlayerPipe extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        /*- Statics -*/
+        this.minPosX = 5;
+        this.maxPosX = 52.5;
+
+        /*- Function bindings -*/
+        this.getPosX = this.getPosX.bind(this);
+    }
+
+    /*- Getters for pos -*/
+    getPosX() {
+        return wrapNumber(this.props.x, 0, 100, this.minPosX, this.maxPosX).toString() + "%"
+    }
+
+    render() {
+        return (
+            <div className="player-pipe" style={{ left: this.getPosX() }}>
+                <img src="assets/pipe-down-arrows.svg" alt="player-pipe"/>
             </div>
         )
     }

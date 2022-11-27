@@ -12,6 +12,22 @@ main.joinRoom{
     gap: 3rem;
 }
 
+.pipe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.player-pipe {
+    position: absolute;
+    // transition: left 0.2s ease-in-out;
+
+    width: 14rem;
+
+    z-index: 10;
+    transform: translateY(-100%);
+}
+
 .player-container{
     display: flex;
     flex-direction: column;
@@ -62,17 +78,23 @@ main.joinRoom{
         width: 100%;
         height: 100%;
 
-        .player{
+        .player-wrapper {
             position: absolute;
+            p {
+                color: rgba(0, 0, 0, 0.377);
+                transform: translateY(-1.5rem);
+            }
+        }
+        
+        .player{
             // width: 10%;
-            height: 10rem;
+            height: 20%;
             aspect-ratio: 1;
             // border-radius: 50%;
             // left: calc(100% - 5rem); //size, thing size, padding
             // top: calc(2% * 5rem); //size, thing size, padding
             // background: hsl(39, 16%, 45%);
 
-            transform: translate(-50%, -50%);
             transform-origin: top;
             display: flex;
             justify-content: center;
@@ -137,32 +159,31 @@ $dingle-amount: 20deg;
 @keyframes dingle {
 
     0% {
-        transform: translate(-50%, -50%) rotate($dingle-amount);
+        transform: rotate($dingle-amount);
     }
     15% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount);
+        transform: rotate(-$dingle-amount);
     }
     28% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.5);
+        transform: rotate($dingle-amount - $dingle-amount / 1.5);
     }
     41% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount /  1.35);
+        transform: rotate(-$dingle-amount + $dingle-amount /  1.35);
     }
     54% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.22);
+        transform: rotate($dingle-amount - $dingle-amount / 1.22);
     }
     67% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.11);
+        transform: rotate(-$dingle-amount + $dingle-amount / 1.11);
     }
     82% {
-        transform: translate(-50%, -50%) rotate($dingle-amount - $dingle-amount / 1.05);
+        transform: rotate($dingle-amount - $dingle-amount / 1.05);
     }
     95% {
-        transform: translate(-50%, -50%) rotate(-$dingle-amount + $dingle-amount / 1.02);
+        transform: rotate(-$dingle-amount + $dingle-amount / 1.02);
     }
     100% {
-        transform: translate(-50%, -50%) rotate(0);
-
+        transform: rotate(0);
     }
 }
 
@@ -220,9 +241,6 @@ $dingle-amount: 20deg;
             &.active {
                 background-color: lighten($color: hsl(38, 16%, 30%), $amount: 0);
                 color: hsl(37, 44%, 93%);
-            }
-            &.active:hover {
-                // background-color: lighten($color: $special-color, $amount: 5);
             }
         }
     }
