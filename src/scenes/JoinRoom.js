@@ -110,23 +110,6 @@ export default class JoinRoom extends React.PureComponent {
             players: [...this.state.players, player]
         }, () => {
             console.log(this.state.players);
-            /*- Play pipe animation -*/
-            this.pipe.current.animate([
-                { "transform": "translateY(0)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(14rem)" },
-                { "transform": "translateY(0)" },
-            ], {
-                duration: 8000,
-                iterations: 1,
-                easing: "cubic-bezier(0.1, 0.7, 1, 0.1)"
-            })
         });
     }
 
@@ -134,11 +117,8 @@ export default class JoinRoom extends React.PureComponent {
     render() {
         return (
             <main className="joinRoom">
-                <button onClick={() => this.addPlayer([Math.random()*100, Math.random()*100])}>add player</button>
+                {/* <button onClick={() => this.addPlayer([Math.random()*100, Math.random()*100])}>add player</button> */}
                 <Board players={this.state.players.map(([x, y], index) => <PlayerSprite x={x} y={y} key={index} username="username" />)} />
-                <div ref={this.pipe} className="pipe-container">
-                    <PlayerPipe x={this.state.pipe} />
-                </div>
 
                 <div className="room-container">
                     <div className="tabs">
@@ -281,36 +261,7 @@ class Board extends React.PureComponent {
 
                 <div className="players">
                     {this.props.players}
-                    {/* <PlayerSprite x={0} y={100} />
-                    <PlayerSprite x={100} y={0} />
-                    <PlayerSprite x={100} y={100} />
-                    <PlayerSprite x={0} y={0} /> */}
                 </div>
-            </div>
-        )
-    }
-}
-class PlayerPipe extends React.PureComponent {
-    constructor(props) {
-        super(props);
-
-        /*- Statics -*/
-        this.minPosX = 5;
-        this.maxPosX = 52.5;
-
-        /*- Function bindings -*/
-        this.getPosX = this.getPosX.bind(this);
-    }
-
-    /*- Getters for pos -*/
-    getPosX() {
-        return wrapNumber(this.props.x, 0, 100, this.minPosX, this.maxPosX).toString() + "%"
-    }
-
-    render() {
-        return (
-            <div className="player-pipe" style={{ left: this.getPosX() }}>
-                <img src="assets/pipe-down-arrows.svg" alt="player-pipe"/>
             </div>
         )
     }
