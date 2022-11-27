@@ -1,5 +1,6 @@
 /*- Imports -*/
 import React from "react";
+import Switch from "../../components/atoms/objects/switch";
 import "../../styles/index.scss"
 import "../../styles/joinroom.scss";
 
@@ -30,7 +31,15 @@ export default class SettingsTab extends React.PureComponent {
     render() {
         return (
             <div className="settings-tab">
-                <p>Settings</p>
+                <h1 class="title">Game Settings</h1>
+                <div class="settings">
+                    <div class="setting">
+                        <h2 class="setting-name">Self-vote</h2>
+                        <Switch label="canver">
+
+                        </Switch>
+                    </div>
+                </div>
             </div>
         )
     }
